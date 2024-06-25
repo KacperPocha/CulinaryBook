@@ -18,7 +18,7 @@ namespace CulinaryBook.Models
         public string Category { get; set; }
         public string Taste { get; set; }
         public string Time { get; set; }
-        public DateTime CreatedData { get; set; }
-        public DateTime UpdatedData { get; set;}
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set;}
     }
 }

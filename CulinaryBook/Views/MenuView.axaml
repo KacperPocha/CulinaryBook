@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CulinaryBook.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CulinaryBook.Views.MenuView"
+             x:DataType="vm:MenuViewModel">
+
+	<Grid Background="#F7DC6F">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<TextBlock Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="70" Foreground="Black">Culinary Book</TextBlock>
+		<Button Content="Przepisy" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="30 0 30 0"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
+                Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="20"
+                Command="{Binding RecipesListCommand}">
+		</Button>
+		<Button Content="Kategorie" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="30 0 30 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
+				Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="20"
+				Command="{Binding ShowCategoriesCommand}">
+		</Button>
+		<Button Content="Losowy Przepis" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Margin="30 0 30 0"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
+                Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="20">
+		</Button>
+
+	</Grid>
+</UserControl>
