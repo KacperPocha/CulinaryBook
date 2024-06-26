@@ -21,10 +21,10 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="10" FontSize="18" Foreground="Black">Lista Przepisów</TextBlock>
+		<TextBlock Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="10" FontSize="35" Foreground="Black">Lista Przepisów</TextBlock>
 
-		<ListBox ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" Height="400"
-                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="10 10 10 10" Background="#F4D03F" Foreground="Black">
+		<ListBox ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe}" Height="520"
+                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="10 10 10 20" Background="#F4D03F" Foreground="Black">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel>
@@ -65,19 +65,19 @@
 			</ListBox.ItemTemplate>
 		</ListBox>
 
-		<Button Content="Cofnij" Grid.Row="3" Grid.Column="0" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
+		<Button Content="Cofnij" Grid.Row="3" Grid.Column="0" Margin="10 0 10 30" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
                 Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="15"
                 Command="{Binding BackCommand}">
 		</Button>
-		<Button Content="Dodaj Książkę" Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
+		<Button Content="Dodaj Przepis" Grid.Row="3" Grid.Column="1" Margin="10 0 10 30" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
                 Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="15"
                 Command="{Binding CreateRecipeCommand}">
 		</Button>
-		<Button Content="Usuń Książkę" Grid.Row="3" Grid.Column="2" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
+		<Button Content="Usuń Przepis" Grid.Row="3" Grid.Column="2" Margin="10 0 10 30" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
                 Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="15"
                 Command="{Binding RemoveRecipeCommand}">
 		</Button>
-		<Button Content="Edytuj Książkę" Grid.Row="3" Grid.Column="3" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
+		<Button Content="Edytuj Przepis" Grid.Row="3" Grid.Column="3" Margin="10 0 10 30" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
                 Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="15"
                 Command="{Binding EditRecipeCommand}">
 		</Button>
