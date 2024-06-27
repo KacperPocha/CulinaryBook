@@ -21,14 +21,14 @@ public class RecipeService
         return _appDbContext.Recipes;
     }
 
-    public async Task<Recipe> CreateRecipe(string title, string ingredients, string directions, string category, string taste, string time)
+    public async Task<Recipe> CreateRecipe(string title, string category, string ingredients, string directions, string taste, string time)
     {
         var recipe = new Recipe()
         {
             Title = title,
+            Category = category,
             Ingredients = ingredients,
             Directions = directions,
-            Category = category,
             Taste = taste,
             Time = time,
             CreatedDate = DateTime.Now,
@@ -40,17 +40,18 @@ public class RecipeService
         return recipe;
     }
 
-    public async Task<Recipe> UpdateRecipe(int id, string title, string ingredients, string directions, string category, string taste, string time)
+    public async Task<Recipe> UpdateRecipe(int id, string title, string category, string ingredients, string directions, string taste, string time)
     {
         var recipe = _appDbContext.Recipes.FirstOrDefault(b => b.Id == id);
         if (recipe != null)
         {
             recipe.Title = title;
+            recipe.Category = category;
             recipe.Ingredients = ingredients;
             recipe.Directions = directions;
-            recipe.Category = category;
             recipe.Taste = taste;
             recipe.Time = time;
+            recipe.UpdatedDate = DateTime.Now;
             _appDbContext.Recipes.AddOrUpdate(recipe);
             await _appDbContext.SaveChangesAsync();
         }

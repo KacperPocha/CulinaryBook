@@ -33,12 +33,6 @@
 		<Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Tytuł:" Margin="10 30 0 0" FontSize="15"/>
 		<TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="250" Margin="60 30 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding RecipeName}"/>
 
-		<Label Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Składniki:" Margin="0 40 90 0" FontSize="15"/>
-		<TextBox Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="0 0 30 20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding RecipeIngredients}"/>
-
-		<Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Kroki:" Margin="30 40 90 0" FontSize="15"/>
-		<TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="30 0 30 20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding RecipeDirections}"/>
-
 		<Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Kategoria:" Margin="10 30 0 0" FontSize="15"/>
 		<TextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Width="250" Margin="90 30 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding RecipeCategory}"/>
 
@@ -47,13 +41,19 @@
 
 		<Label Grid.Row="0" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Czas wykonania:" Margin="10 30 0 0" FontSize="15"/>
 		<TextBox Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" Width="250" Margin="140 30 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding RecipeTime}"/>
+		
+		<Label Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Składniki:" Margin="0 40 90 0" FontSize="15"/>
+		<TextBox Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="0 0 30 20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding RecipeIngredients}"/>
+
+		<Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Kroki:" Margin="30 40 90 0" FontSize="15"/>
+		<TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="30 0 30 20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding RecipeDirections}"/>
 
 		<Button Content="Cofnij" Grid.Row="7" Grid.Column="6" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Center" Foreground="Black"
 				Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="15"
 				Command="{Binding BackCommand}"/>
 		<Button Content="Gotowe" Grid.Row="7" Grid.Column="7" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Center" Foreground="Black"
 				Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="15"
-				Command="{Binding CreateRecipeCommand}"/>
+				Command="{Binding CreateRecipeCommand}" HotKey="Enter"/>
 	</Grid>
 
 

@@ -45,5 +45,15 @@ namespace CulinaryBook.ViewModels
         {
             CurrentView = new CategoriesViewModel(this, _appDbContext);
         }
+
+        public void ShowRecipeDetails(Recipe recipe)
+        {
+            CurrentView = new RecipeViewModel(this, _appDbContext, recipe);
+        }
+
+        public void ShowRecipesByCategory(string category)
+        {
+            CurrentView = new RecipesListViewModel(this, _appDbContext, category);
+        }
     }
 }

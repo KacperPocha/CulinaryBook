@@ -1,20 +1,34 @@
-﻿using CulinaryBook.Persistance;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CulinaryBook.Models;
+using CulinaryBook.Persistance;
+using ReactiveUI;
+using System.Reactive;
 
 namespace CulinaryBook.ViewModels
 {
     internal class RecipeViewModel : ViewModelBase
     {
         private MainWindowViewModel _mainWindowViewModel;
-        public RecipeViewModel(MainWindowViewModel mainWindowViewModel, IAppDbContext appDbContext)
+        private Recipe _recipe;
+
+        public Recipe Recipe
+        {
+            get => _recipe;
+            set => this.RaiseAndSetIfChanged(ref _recipe, value);
+        }
+
+        public ReactiveCommand<Unit, Unit> BackCommand { get; }
+
+        public RecipeViewModel(MainWindowViewModel mainWindowViewModel, IAppDbContext appDbContext, Recipe recipe)
         {
             _mainWindowViewModel = mainWindowViewModel;
+            _recipe = recipe;
 
+            BackCommand = ReactiveCommand.Create(Back);
+        }
 
+        private void Back()
+        {
+            _mainWindowViewModel.ShowMenu();
         }
     }
 }

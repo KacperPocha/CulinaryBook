@@ -60,8 +60,10 @@ namespace CulinaryBook.ViewModels
 
         public ReactiveCommand<Unit, Unit> CreateRecipeCommand { get; }
         public ReactiveCommand<Unit, Unit> BackCommand { get; }
+
         public CreateRecipeViewModel(MainWindowViewModel mainWindowViewModel, IAppDbContext appDbContext)
             : this(mainWindowViewModel, appDbContext, null) { }
+
         public CreateRecipeViewModel(MainWindowViewModel mainWindowViewModel, IAppDbContext appDbContext, Recipe recipe)
         {
             _mainWindowViewModel = mainWindowViewModel;
@@ -76,7 +78,6 @@ namespace CulinaryBook.ViewModels
                 RecipeDirections = recipe.Directions;
                 RecipeTaste = recipe.Taste;
                 RecipeTime = recipe.Time;
-
             }
 
             CreateRecipeCommand = ReactiveCommand.CreateFromTask(HandleCreateCommand);

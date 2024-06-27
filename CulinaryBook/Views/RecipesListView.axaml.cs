@@ -1,13 +1,16 @@
-using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using CulinaryBook.ViewModels;
+using System;
 
-namespace CulinaryBook.Views;
-
-public partial class RecipesListView : UserControl
+namespace CulinaryBook.Views
 {
-    public RecipesListView()
+    public partial class RecipesListView : UserControl
     {
-        InitializeComponent();
+        public RecipesListView()
+        {
+            InitializeComponent();
+        }
     }
 }

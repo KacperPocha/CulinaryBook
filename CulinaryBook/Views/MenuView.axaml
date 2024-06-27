@@ -24,20 +24,20 @@
 			<RowDefinition></RowDefinition>
 			<RowDefinition></RowDefinition>
 		</Grid.RowDefinitions>
-		<TextBlock Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="70" Foreground="Black">Culinary Book</TextBlock>
+		<TextBlock Grid.Row="1" Grid.ColumnSpan="6" Grid.RowSpan="2" HorizontalAlignment="Center" FontSize="110" Foreground="Black">Culinary Book</TextBlock>
 		<Button Content="Przepisy" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="30 0 30 0"
                 HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
-                Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="20"
+                Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="30"
                 Command="{Binding RecipesListCommand}">
 		</Button>
 		<Button Content="Kategorie" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="30 0 30 0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
-				Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="20"
-				Command="{Binding ShowCategoriesCommand}">
+                Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="30"
+                Command="{Binding ShowCategoriesCommand}">
 		</Button>
 		<Button Content="Losowy Przepis" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Margin="30 0 30 0"
                 HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"
-                Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="20">
+                Background="#D4AC0D" HorizontalContentAlignment="Center" FontSize="30"
+                Command="{Binding ShowRandomRecipeCommand}">
 		</Button>
-
 	</Grid>
 </UserControl>

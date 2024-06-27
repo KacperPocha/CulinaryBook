@@ -8,7 +8,6 @@ using System.Linq;
 using System.Reactive;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace CulinaryBook.ViewModels
 {
@@ -19,6 +18,8 @@ namespace CulinaryBook.ViewModels
         private RecipeService _recipeService;
         private MainWindowViewModel _mainWindowViewModel;
         private bool _sortByCategory;
+        private string _filterCategory;
+        private string _searchQuery;
 
         public ObservableCollection<Recipe> Recipes
         {
@@ -45,63 +46,95 @@ namespace CulinaryBook.ViewModels
             }
         }
 
+        public string SearchQuery
+        {
+            get => _searchQuery;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _searchQuery, value);
+                RefreshRecipes();
+            }
+        }
+
         public ReactiveCommand<Unit, Unit> CreateRecipeCommand { get; }
         public ReactiveCommand<Unit, Unit> RemoveRecipeCommand { get; }
         public ReactiveCommand<Unit, Unit> EditRecipeCommand { get; }
         public ReactiveCommand<Unit, Unit> BackCommand { get; }
-        public RecipesListViewModel(MainWindowViewModel mainWindowViewModel, IAppDbContext appDbContext)
+        public ReactiveCommand<Unit, Unit> OpenRecipeCommand { get; }
+
+        public RecipesListViewModel(MainWindowViewModel mainWindowViewModel, IAppDbContext appDbContext, string filterCategory = null)
         {
             _mainWindowViewModel = mainWindowViewModel;
             _recipeService = new RecipeService(appDbContext);
+            _filterCategory = filterCategory;
 
             CreateRecipeCommand = ReactiveCommand.Create(CreateRecipe);
             RemoveRecipeCommand = ReactiveCommand.Create(RemoveRecipe);
             EditRecipeCommand = ReactiveCommand.Create(EditRecipe);
             BackCommand = ReactiveCommand.Create(Back);
+            OpenRecipeCommand = ReactiveCommand.Create(OpenRecipe);
 
             Recipes = new ObservableCollection<Recipe>();
             RefreshRecipes();
         }
 
-            private void CreateRecipe()
+        private void CreateRecipe()
+        {
+            _mainWindowViewModel.ShowCreateRecipe();
+        }
+
+        private async void RemoveRecipe()
+        {
+            if (_selectedRecipe != null)
             {
-                _mainWindowViewModel.ShowCreateRecipe();
+                await _recipeService.DeleteRecipe(_selectedRecipe.Id);
+                RefreshRecipes();
+            }
+        }
+
+        private void EditRecipe()
+        {
+            if (_selectedRecipe != null)
+            {
+                _mainWindowViewModel.ShowCreateRecipe(_selectedRecipe);
+            }
+        }
+
+        private void Back()
+        {
+            _mainWindowViewModel.ShowMenu();
+        }
+
+        private void OpenRecipe()
+        {
+            if (_selectedRecipe != null)
+            {
+                _mainWindowViewModel.ShowRecipeDetails(_selectedRecipe);
+            }
+        }
+
+        public void RefreshRecipes()
+        {
+            var recipes = _recipeService.GetRecipes();
+
+            if (!string.IsNullOrEmpty(_filterCategory))
+            {
+                recipes = recipes.Where(r => r.Category == _filterCategory).ToList();
             }
 
-            private async void RemoveRecipe()
+            if (!string.IsNullOrEmpty(SearchQuery))
             {
-                if (_selectedRecipe != null)
-                {
-                    await _recipeService.DeleteRecipe(_selectedRecipe.Id);
-                    RefreshRecipes();
-                }
+                recipes = recipes.Where(r => r.Title.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
-            private void EditRecipe()
+            if (SortByCategory)
             {
-                if (_selectedRecipe != null)
-                {
-                    _mainWindowViewModel.ShowCreateRecipe(_selectedRecipe);
-                }
+                Recipes = new ObservableCollection<Recipe>(recipes.OrderBy(b => b.Category));
             }
-
-            private void Back()
+            else
             {
-                _mainWindowViewModel.ShowMenu();
-            }
-
-            public void RefreshRecipes()
-            {
-                var recipes = _recipeService.GetRecipes();
-
-                if (SortByCategory)
-                {
-                    Recipes= new ObservableCollection<Recipe>(recipes.OrderBy(b => b.Category));
-                }
-                else
-                {
-                    Recipes = new ObservableCollection<Recipe>(recipes);
-                }
+                Recipes = new ObservableCollection<Recipe>(recipes);
             }
         }
     }
+}
