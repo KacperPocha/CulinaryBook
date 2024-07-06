@@ -1,4 +1,4 @@
-Aplikacja Książka Kulinarna
+
 Książka Kulinarna to aplikacja do zarządzania przepisami, która pozwala użytkownikom tworzyć, edytować, usuwać i przeglądać przepisy. Użytkownicy mogą również filtrować przepisy według kategorii oraz wyszukiwać przepisy po nazwie. Dodatkowo, aplikacja zawiera funkcję wyświetlania losowego przepisu.
 
 Funkcje
